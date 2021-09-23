@@ -15,5 +15,3 @@ class Player {
     // JSON.parse;
   }
 }
-
-module.exports = Player;
