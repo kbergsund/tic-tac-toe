@@ -13,13 +13,15 @@ class Game {
       if (!this.checkForWin()) {
         // calls method within Player. Drafted using prompt() right now while I am not touching the DOM. Player should input tile number where they want to place their token- this may move here or even to main.js eventually because I'll be using event delegation.
         var play = this.turn.takeTurn(this);
-        // Sets element within board array- index corresponds to user input -to the player emoji.
-        // preliminary error handling for when a spot is already taken by a token
+
+        // preliminary error handling for when a spot is already taken by a token. ONLY WORKS ONCE, needs refactoring...
         if (!this.board[play]) {
           this.board[play] = this.turn.token;
         } else {
+          // Sets element within board array- index corresponds to user input -to the player emoji.
           var play = this.turn.takeTurn(this);
         }
+
         console.log(this.board);
         this.toggleTurn();
         this.checkForWin();
@@ -45,23 +47,66 @@ class Game {
   }
 
   checkForWin() {
-    this.win = false;
+    // can be further refactored. Use conditional logic to set num1, 2, & 3 based on boardValue. Then go into comparing them.
+    // this.win = false;
+    var winningNumbers = [0, 1, 2, 3, 6];
+    for (var i = 0; i < winningNumbers.length; i++) {
+      var boardValue = winningNumbers[i];
+      // horizontal
+      if (i === 0 || i === 3 || i === 4) {
+        if (this.board[boardValue] !== "") {
+          var num1 = this.board[boardValue];
+          var num2 = this.board[boardValue + 1];
+          var num3 = this.board[boardValue + 2];
+          console.log(num1, num2, num3);
+          if (num1 === num2 && num1 === num3) {
+            return true;
+          }
+        }
+      }
+      // vertical
+      if (i === 0 || i === 1 || i === 2) {
+        if (this.board[boardValue] !== "") {
+          var num1 = this.board[boardValue];
+          var num2 = this.board[boardValue + 3];
+          var num3 = this.board[boardValue + 6];
+          console.log(num1, num2, num3);
+          if (num1 === num2 && num1 === num3) {
+            return true;
+          }
+        }
+      }
+      // diagonal
+      if (i === 0 || i === 2) {
+        if (this.board[boardValue] !== "") {
+          if (i === 0) {
+            var num1 = this.board[boardValue];
+            var num2 = this.board[boardValue + 4];
+            var num3 = this.board[boardValue + 8];
+            console.log(num1, num2, num3);
+            if (num1 === num2 && num1 === num3) {
+              return true;
+            }
+          } else if (i === 2) {
+            var num1 = this.board[boardValue];
+            var num2 = this.board[boardValue + 2];
+            var num3 = this.board[boardValue + 4];
+            console.log(num1, num2, num3);
+            if (num1 === num2 && num1 === num3) {
+              return true;
+            }
+          }
+        }
+      }
+    }
+  }
 
-    // winning combinations:
-      // horizontal: 0, 1, 2 ... 3, 4, 5 ... 6, 7, 8
-      // vertical: 0, 3, 6 ... 1, 4, 7 ... 2, 5, 8
-      // diagonal: 0, 4, 8 ... 2, 4, 6
-
-    // numbers we need to check: 0, 1, 2, 3, 6
-    // create array with these numbers.
-      // loop through array. at each number, check if
-      // we need some way to exclude nonwinning scenarios....
-      // include conditional that match certain numbers.
-
-    // should take in gameData and check for various winning combinations.
-    // loop through array, check for matching values.
-    // if condition is met, should add 1 to player wins
-      // and perhaps return true? So that DOM can update accordingly.
+  // winning numbers: 0, 1, 2, 3, 6
+    // 0: horizontal, vertical, diagonal
+    // 1: vertical
+    // 2: vertical, diagonal
+    // 3: horizontal
+    // 6: horizontal
 
   checkForDraw() {
     if (!this.checkForWin()) {
