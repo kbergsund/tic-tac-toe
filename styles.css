@@ -4,7 +4,7 @@
 }
 
 body {
-  background-image: linear-gradient(#eec0c6, #7ee8fa);
+  background-image: linear-gradient(#004e92, #000428);
   height: 100vh;
   margin: auto;
   font-size: 28px;
@@ -53,7 +53,7 @@ article {
 }
 
 .gameboard {
-  background-image: linear-gradient(#f9d976, #f39f86);
+  background-image: linear-gradient(#f9d423, #ff4e50);
   height: 85%;
   padding: 0;
   display: flex;
