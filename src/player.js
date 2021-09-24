@@ -14,4 +14,9 @@ class Player {
     // localStorage.getItem;
     // JSON.parse;
   }
+
+  takeTurn(game) {
+    var play = parseInt(prompt('Which tile?'));
+    return play;
+  }
 }
