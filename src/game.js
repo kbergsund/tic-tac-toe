@@ -6,7 +6,6 @@ class Game {
     // for use in same selection error handling... not functional yet
     // this.occupied = [];
     this.turn = this.player1;
-    this.win = false;
   }
 
   takeTurn(tileClicked) {
@@ -42,9 +41,9 @@ class Game {
           var num3 = this.board[boardValue + 2];
           console.log(num1, num2, num3);
           if (num1 === num2 && num1 === num3) {
-            this.win = true;
             // sets new property to the token that is in the winning spots. This is used in the processWin() function
             this.winningToken = this.board[boardValue];
+            return true;
             // return this.board[boardValue];
           }
         }
@@ -57,8 +56,8 @@ class Game {
           var num3 = this.board[boardValue + 6];
           console.log(num1, num2, num3);
           if (num1 === num2 && num1 === num3) {
-            this.win = true;
             this.winningToken = this.board[boardValue];
+            return true;
           }
         }
       }
@@ -71,8 +70,8 @@ class Game {
             var num3 = this.board[boardValue + 8];
             console.log(num1, num2, num3);
             if (num1 === num2 && num1 === num3) {
-              this.win = true;
               this.winningToken = this.board[boardValue];
+              return true;
             }
           } else if (i === 2) {
             var num1 = this.board[boardValue];
@@ -80,8 +79,8 @@ class Game {
             var num3 = this.board[boardValue + 4];
             console.log(num1, num2, num3);
             if (num1 === num2 && num1 === num3) {
-              this.win = true;
               this.winningToken = this.board[boardValue];
+              return true;
             }
           }
         }
@@ -148,9 +147,7 @@ class Game {
 
   checkForDraw() {
     if (!this.board.includes('')) {
-      console.log('Nobody wins, it\'s a draw!')
       return true;
-      // if true, DOM should update accordingly. Check demo.
     } else {
       return false;
     }
@@ -159,8 +156,5 @@ class Game {
   resetGame() {
     this.board = ["", "", "", "", "", "", "" ,"" ,""];
     this.turn = this.player1;
-    console.log(this.board);
-    // main.js will handle resetting DOM.
-    // research timeout for when to call this and restart playGame()
   }
 }

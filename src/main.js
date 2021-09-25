@@ -17,32 +17,35 @@ function generateGrid() {
 }
 
 function playGame() {
-  // each article class matches to index of data model array
-  // sets variable rather than chaining together childNodes.childNodes
-  // if (!game.win) {
-    var grid = gameBoard.childNodes[3];
-    var tileClicked = event.target.className;
-    game.takeTurn(tileClicked);
+  updateDOM();
+  evaluateGame();
+}
 
-    // for testing
-    console.log(game.board);
+function updateDOM() {
+  var grid = gameBoard.childNodes[3];
+  var tileClicked = event.target.className;
+  game.takeTurn(tileClicked);
 
-    // loops through childNodes of grid. If child node class name matches the event target classname, that becomes the tile to update. Links DOM with event target. And then loops in data model in innerHTML to update.
-    for (var i = 0; i < grid.childNodes.length; i++) {
-      var tileToUpdate = grid.childNodes[i];
-      var tileNumber = grid.childNodes[i].className
-      if (tileNumber === tileClicked) {
-        tileToUpdate.innerHTML = `<p>${game.board[tileNumber]}<p>`
-      }
+  for (var i = 0; i < grid.childNodes.length; i++) {
+    var tileToUpdate = grid.childNodes[i];
+    var tileNumber = grid.childNodes[i].className;
+    if (tileNumber === tileClicked) {
+      tileToUpdate.innerHTML = `<p>${game.board[tileNumber]}<p>`
     }
+  }
+}
 
-    game.checkForWin();
-    if (game.win) {
-      game.processWin(game.winningToken);
-    } else {
-      game.checkForDraw();
-    }
-    console.log(game.win);
+function evaluateGame() {
+  var header = gameBoard.childNodes[1]
+  if (game.checkForWin()) {
+    header.innerText = `${game.turn.token} wins!`;
+    game.processWin(game.winningToken);
+    game.resetGame();
+  } else if (game.checkForDraw()) {
+    header.innerText = 'It\'s a draw!';
+    game.resetGame();
+  } else {
     game.toggleTurn();
     gameBoard.childNodes[1].innerText = `It's ${game.turn.token}'s turn`;
+  }
 }
