@@ -3,8 +3,6 @@ class Game {
     this.player1 = new Player(1, '🦉');
     this.player2 = new Player(2, '🦝');
     this.board = ["", "", "", "", "", "", "" ,"" ,""];
-    // for use in same selection error handling... not functional yet
-    // this.occupied = [];
     this.turn = this.player1;
   }
 
@@ -12,8 +10,8 @@ class Game {
     if (this.board[tileClicked] === "") {
       this.board[tileClicked] = this.turn.token;
     } else {
-      console.log('ERROR HANDLING');
-      // double negative- toggleTurn() is called twice while I don't have a better error handling solution.
+      console.log('access denied');
+      // double negative- toggleTurn() is called twice while I don't have a better error handling solution. This may be my solution...?
       this.toggleTurn();
     }
   }
@@ -24,13 +22,11 @@ class Game {
     } else {
       this.turn = this.player1;
     }
-    // DOM - toggle a turn class? Or just update innerText of h1 based on the property value after it runs?
   }
 
   checkForWin() {
     // needs to be further refactored.
     var winningNumbers = [0, 1, 2, 3, 6];
-
     for (var i = 0; i < winningNumbers.length; i++) {
       var boardValue = winningNumbers[i];
       // horizontal
@@ -41,10 +37,8 @@ class Game {
           var num3 = this.board[boardValue + 2];
           console.log(num1, num2, num3);
           if (num1 === num2 && num1 === num3) {
-            // sets new property to the token that is in the winning spots. This is used in the processWin() function
             this.winningToken = this.board[boardValue];
             return true;
-            // return this.board[boardValue];
           }
         }
       }
@@ -86,7 +80,7 @@ class Game {
         }
       }
     }
-
+  }
     // An attempt that needs debugging...
     // Use conditional logic to set num1, 2, & 3 based on boardValue. Then go into comparing them ??
 
@@ -123,7 +117,6 @@ class Game {
     //     }
     //   }
     // }
-  }
 
   // winning numbers: 0, 1, 2, 3, 6
     // 0: horizontal, vertical, diagonal
@@ -132,16 +125,13 @@ class Game {
     // 3: horizontal
     // 6: horizontal
 
-// draw 0 2 3 4 7
-// draw 1 5 6 8
-
   processWin(winningToken) {
     if (Object.values(this.player1).includes(winningToken)) {
-      console.log('player1 wins!');
       this.player1.winGame();
+      return this.player1.id;
     } else if (Object.values(this.player2).includes(winningToken)) {
-      console.log('player2 wins!');
       this.player2.winGame();
+      return this.player2.id;
     }
   }
 
