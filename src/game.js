@@ -25,98 +25,55 @@ class Game {
   }
 
   checkForWin() {
-    // needs to be further refactored.
     var winningNumbers = [0, 1, 2, 3, 6];
+
     for (var i = 0; i < winningNumbers.length; i++) {
-      var boardValue = winningNumbers[i];
-      // horizontal
-      if (i === 0 || i === 3 || i === 4) {
-        if (this.board[boardValue] !== "") {
-          var num1 = this.board[boardValue];
-          var num2 = this.board[boardValue + 1];
-          var num3 = this.board[boardValue + 2];
-          console.log(num1, num2, num3);
-          if (num1 === num2 && num1 === num3) {
-            this.winningToken = this.board[boardValue];
-            return true;
-          }
-        }
+      if (i === 0) {
+        var a = 1;
+        var b = 2;
+        var c = 3;
+        var d = 6;
+        var e = 4;
+        var f = 8;
+      } else if (i === 1) {
+        var c = 3;
+        var d = 6;
+      } else if (i === 2) {
+        var c = 3;
+        var d = 6;
+        var e = 2;
+        var f = 4;
+      } else if (i === 3 || i === 4) {
+        var a = 1;
+        var b = 2
       }
-      // vertical
-      if (i === 0 || i === 1 || i === 2) {
-        if (this.board[boardValue] !== "") {
-          var num1 = this.board[boardValue];
-          var num2 = this.board[boardValue + 3];
-          var num3 = this.board[boardValue + 6];
-          console.log(num1, num2, num3);
-          if (num1 === num2 && num1 === num3) {
-            this.winningToken = this.board[boardValue];
-            return true;
-          }
-        }
-      }
-      // diagonal
-      if (i === 0 || i === 2) {
-        if (this.board[boardValue] !== "") {
-          if (i === 0) {
-            var num1 = this.board[boardValue];
-            var num2 = this.board[boardValue + 4];
-            var num3 = this.board[boardValue + 8];
-            console.log(num1, num2, num3);
-            if (num1 === num2 && num1 === num3) {
-              this.winningToken = this.board[boardValue];
-              return true;
-            }
-          } else if (i === 2) {
-            var num1 = this.board[boardValue];
-            var num2 = this.board[boardValue + 2];
-            var num3 = this.board[boardValue + 4];
-            console.log(num1, num2, num3);
-            if (num1 === num2 && num1 === num3) {
-              this.winningToken = this.board[boardValue];
-              return true;
-            }
-          }
+
+      var boardValue = this.board[i];
+      var num2 = this.board[i + a];
+      var num3 = this.board[i + b];
+      var num4 = this.board[i + c];
+      var num5 = this.board[i + d];
+      var num6 = this.board[i + e];
+      var num7 = this.board[i + f];
+      
+      if (boardValue !== "") {
+        // horizontal
+        if (boardValue === num2 && boardValue === num3) {
+          console.log('hi');
+          this.winningToken = boardValue;
+          return true;
+        // vertical
+        } else if (boardValue === num4 && boardValue === num5) {
+          this.winningToken = boardValue;
+          return true;
+        // diagonal
+        } else if (boardValue === num6 && boardValue === num7) {
+          this.winningToken = boardValue;
+          return true;
         }
       }
     }
   }
-    // An attempt that needs debugging...
-    // Use conditional logic to set num1, 2, & 3 based on boardValue. Then go into comparing them ??
-
-    // for (var i = 0; i < winningNumbers.length; i++) {
-    //   var boardValue = winningNumbers[i];
-    //   var num1 = this.board[boardValue];
-    //
-    //   var horizNum2 = [num1 + 1]
-    //   var horizNum3 = [num1 + 2]
-    //
-    //   var vertNum2 = [num1 + 3]
-    //   var vertNum3 = [num1 + 6]
-    //
-    //   var diag1Num2 = [num1 + 4]
-    //   var diag1Num3 = [num1 + 8]
-    //
-    //   var diag2Num2 = [num1 + 2]
-    //   var diag2Num3 = [num1 + 4]
-    //
-    //   if (i === 0 || i === 3 || i === 4) {
-    //     if (num1 !== "") {
-    //       if (num1 === horizNum2 && num1 === horizNum3) {
-    //         this.win = true;
-    //         this.winningToken = this.board[boardValue];
-    //       }
-    //     }
-    //   }
-    //   if (i === 0 || i === 1 || i === 2) {
-    //     if (num1 !== "") {
-    //       if (num1 === vertNum2 && num1 === vertNum3) {
-    //         this.win = true;
-    //         this.winningToken = this.board[boardValue];
-    //       }
-    //     }
-    //   }
-    // }
 
   // winning numbers: 0, 1, 2, 3, 6
     // 0: horizontal, vertical, diagonal
