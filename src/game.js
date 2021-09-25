@@ -2,40 +2,20 @@ class Game {
   constructor() {
     this.player1 = new Player(1, '🦉');
     this.player2 = new Player(2, '🦝');
-    this.board = ["", "", "", "", "", "", "" ,"" ,""]; // [ 0, 1, 2, 3, 4, 5, 6, 7, 8] will correspond to sections on gameboard
+    this.board = ["", "", "", "", "", "", "" ,"" ,""];
     // for use in same selection error handling... not functional yet
     // this.occupied = [];
     this.turn = this.player1;
     this.win = false;
   }
 
-  playGame() {
-    console.log(this.board);
-    // loops through max number of turns in a game (does not factor in same selection turns... will need update once functional)
-      // could I just reset the middle loop condition to this.board.includes('')? Then check for draw would need to be outside the loop.
-    for (var i = 0; i < 9; i++) {
-      if (!this.win) {
-
-        // preliminary error handling for when a spot is already taken by a token. ONLY WORKS ONCE, needs refactoring... a while loop?
-        if (this.board[play] === "") {
-          this.board[play] = this.turn.token;
-        } else {
-          var play = this.turn.takeTurn(this);
-          this.board[play] = this.turn.token;
-        }
-
-        // var play = this.turn.takeTurn(this);
-        // this.board[play] = this.turn.token;
-
-        console.log(this.board);
-        this.toggleTurn();
-        this.checkForWin();
-        this.checkForDraw();
-
-      } else if (this.win) {
-        this.processWin(this.winningToken);
-        return;
-      }
+  takeTurn(tileClicked) {
+    if (this.board[tileClicked] === "") {
+      this.board[tileClicked] = this.turn.token;
+    } else {
+      console.log('ERROR HANDLING');
+      // double negative- toggleTurn() is called twice while I don't have a better error handling solution.
+      this.toggleTurn();
     }
   }
 
@@ -60,7 +40,7 @@ class Game {
           var num1 = this.board[boardValue];
           var num2 = this.board[boardValue + 1];
           var num3 = this.board[boardValue + 2];
-          // console.log(num1, num2, num3);
+          console.log(num1, num2, num3);
           if (num1 === num2 && num1 === num3) {
             this.win = true;
             // sets new property to the token that is in the winning spots. This is used in the processWin() function
@@ -184,7 +164,3 @@ class Game {
     // research timeout for when to call this and restart playGame()
   }
 }
-
-var game1 = new Game;
-game1.playGame();
-game1.resetGame();
