@@ -57,6 +57,6 @@ function evaluateGame() {
 
 function displayWin() {
   var winnerID = game.processWin(game.winningToken);
-  var interpolatedWinner = game[`player${winnerID}`].wins
+  var interpolatedWinner = game[`player${winnerID}`].wins;
   winCount[winnerID - 1].childNodes[3].innerText = `${interpolatedWinner} wins`;
 }
