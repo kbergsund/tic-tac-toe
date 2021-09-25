@@ -18,6 +18,5 @@ class Player {
   // perhaps this is not necessary... just put it in game.js
   winGame() {
     this.wins += 1;
-    console.log(this.wins);
   }
 }
