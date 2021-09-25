@@ -37,18 +37,14 @@ function updateGrid() {
 }
 
 function evaluateGame() {
-  var header = gameBoard.childNodes[1]
+  var header = gameBoard.childNodes[1];
   if (game.checkForWin()) {
     header.innerText = `${game.turn.token} wins!`;
     displayWin();
-    game.resetGame();
-    // need to set this on a timeout somehow (later iteration)
-    // be sure to also reset header to whose turn it is.
-    generateGrid();
+    resetPlay();
   } else if (game.checkForDraw()) {
     header.innerText = 'It\'s a draw!';
-    game.resetGame();
-    generateGrid();
+    resetPlay();
   } else {
     game.toggleTurn();
     gameBoard.childNodes[1].innerText = `It's ${game.turn.token}'s turn`;
@@ -59,4 +55,9 @@ function displayWin() {
   var winnerID = game.processWin(game.winningToken);
   var interpolatedWinner = game[`player${winnerID}`].wins;
   winCount[winnerID - 1].childNodes[3].innerText = `${interpolatedWinner} wins`;
+}
+
+function resetPlay() {
+  game.resetGame();
+  setTimeout(generateGrid, 1500);
 }

@@ -11,7 +11,7 @@ class Game {
       this.board[tileClicked] = this.turn.token;
     } else {
       console.log('access denied');
-      // double negative- toggleTurn() is called twice while I don't have a better error handling solution. This may be my solution...?
+      // toggleTurn() is called twice- double negative (here and in main.js) -as error handling solution.
       this.toggleTurn();
     }
   }
@@ -48,18 +48,18 @@ class Game {
         var b = 2
       }
 
-      var boardValue = this.board[i];
-      var num2 = this.board[i + a];
-      var num3 = this.board[i + b];
-      var num4 = this.board[i + c];
-      var num5 = this.board[i + d];
-      var num6 = this.board[i + e];
-      var num7 = this.board[i + f];
-      
+      var num1 = winningNumbers[i];
+      var boardValue = this.board[num1];
+      var num2 = this.board[num1 + a];
+      var num3 = this.board[num1 + b];
+      var num4 = this.board[num1 + c];
+      var num5 = this.board[num1 + d];
+      var num6 = this.board[num1 + e];
+      var num7 = this.board[num1 + f];
+
       if (boardValue !== "") {
         // horizontal
         if (boardValue === num2 && boardValue === num3) {
-          console.log('hi');
           this.winningToken = boardValue;
           return true;
         // vertical
@@ -74,13 +74,6 @@ class Game {
       }
     }
   }
-
-  // winning numbers: 0, 1, 2, 3, 6
-    // 0: horizontal, vertical, diagonal
-    // 1: vertical
-    // 2: vertical, diagonal
-    // 3: horizontal
-    // 6: horizontal
 
   processWin(winningToken) {
     if (Object.values(this.player1).includes(winningToken)) {
