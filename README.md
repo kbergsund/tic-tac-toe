@@ -4,15 +4,6 @@ Mod 2108 FEE - Final Project
 
 A dynamic game of nocturnal animal themed, browser tic tac toe. Built out by applying my knowledge of the data model, event delegation, DOM manipulation via Javascript, and localStorage. 
 
-## Table of Contents
-* [Languages/Technology](#technology)
-* [Install + Setup](#set-up)
-* [Contributors](#contributors)
-* [Wins](#wins)
-* [Challenges + Improvements](#challenges-+-Improvements)
-* [Project Specs](#project-specs)
-* [Contributors](#contributors)
-
 ## Languages/Technology
 Javascript, HTML, CSS, Github, Atom, Chrome Dev Tools
 
