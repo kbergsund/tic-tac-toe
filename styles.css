@@ -41,6 +41,11 @@ article {
   align-items: center;
 }
 
+/* change this to class. So it can be deactivated once tile is occupied. Will need to refactor grid update functions to accomodate new class in classList */
+article:hover {
+  cursor: pointer;
+}
+
 article p {
   font-size: 2.5em;
 }
