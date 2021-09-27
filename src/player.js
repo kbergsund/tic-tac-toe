@@ -6,16 +6,19 @@ class Player {
   }
 
   saveWinsToStorage() {
-    // JSON.stringify();
-    // localStorage.setItem();
+    var stringifiedObject = JSON.stringify(this);
+    var storedObject = localStorage.setItem(`${this.id}`, stringifiedObject);
   }
 
+  // add this into generateGrid function.
   retrieveWinsFromStorage() {
-    // localStorage.getItem;
-    // JSON.parse;
+    var retrievedObject = localStorage.getItem(`${this.id}`);
+    var parsedObject = JSON.parse(retrievedObject);
+    
+    return parsedObject;
   }
 
-  // perhaps this is not necessary... just put it in game.js
+  // perhaps this is not necessary... just put it in game.js...
   winGame() {
     this.wins += 1;
   }

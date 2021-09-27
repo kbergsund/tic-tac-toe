@@ -7,6 +7,7 @@ window.addEventListener('load', generateGrid);
 gameBoard.addEventListener('click', playGame);
 
 function generateGrid() {
+  gameBoard.childNodes[1].innerText = `It's ${game.turn.token}'s turn`;
   var grid = gameBoard.childNodes[3];
   grid.innerHTML = '';
   for (var i = 0; i < 9; i++) {
@@ -16,6 +17,8 @@ function generateGrid() {
     </article>
     `
   }
+  game.resetGame();
+  persistWins();
 }
 
 function playGame() {
@@ -32,7 +35,16 @@ function updateGrid() {
     var tileNumber = grid.childNodes[i].className;
     if (tileNumber === tileClicked) {
       tileToUpdate.innerHTML = `<p>${game.board[tileNumber]}<p>`
+      console.log(tileToUpdate.classList);
     }
+  }
+}
+
+function persistWins() {
+  for (var i = 0; i < 2; i++) {
+    var player = i + 1;
+    var winsToDisplay = game[`player${player}`].wins;
+    winCount[i].childNodes[3].innerText = `${winsToDisplay} wins`;
   }
 }
 
