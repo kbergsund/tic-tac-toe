@@ -8,8 +8,8 @@ A game of browser tic tac toe, fully dynamic in response to user interaction. No
 Javascript, HTML, CSS, Github, Atom, Chrome Dev Tools
 
 ## Learning Goals
-* Solidify & demnstrate understanding of all Mod 1 concepts & lessons (DRY Javascript/CSS, semantic HTML, event delegation, localStorage, etc.)
-* Understand the different between the data model & DOM display. Build out complex web app with the latter dependent on the former for a single source of truth
+* Solidify & demnstrate understanding of all Mod 1 concepts & lessons (DRY Javascript/CSS, semantic HTML, event delegation, localStorage, etc.).
+* Understand the different between the data model & DOM display. Build out complex web app with the latter dependent on the former for a single source of truth.
 * Break down complex final spec into smaller, actionable iterations that build on each other cleanly and effectively.
 
 ## Install & Setup
@@ -19,8 +19,8 @@ Javascript, HTML, CSS, Github, Atom, Chrome Dev Tools
 ## Web App Attributes 
 ### Code Architecture:
 * `player.js` - Declaration of Player class that tracks unique player id, token (emoji), and number of wins.
-* `game.js` - Where the data model lives and all changes to the data model take place. An array of 9 empty strings that correspond to the 9 tiles on the tic-tac-toe grid is the app's source of truth- it is set as a `game.board` property. Two other properties are two object instances of the Player class. Other methods include 
-* `main.js` - Where all DOM manipulation takes place. The DOM is dependent on and buitlt directly from the data model.
+* `game.js` - Where the data model lives and all changes to the data model take place. An array of 9 empty strings that correspond to the 9 tiles on the tic-tac-toe grid is the app's source of truth- it is set as a `game.board` property. Two other properties are two object instances of the Player class. Other methods include toggling whose turn it is, evaluating win conditions using logic & arithmetic, checking for a draw, and resetting the data model.
+* `main.js` - Where all DOM manipulation takes place. The DOM is dependent on and built directly from the data model. The only global variable is an object instance of the Game class. One event listener is set up on a parent element of the gameboard so that event delegation is optimized.
 
 ### Functionality:
 1. On page load, users are greeted by the game board, framed by two scoreboards and the corresponding animal tokens (in place of X's and O's). A message at the top relays who's turn it is.
