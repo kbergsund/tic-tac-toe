@@ -27,27 +27,27 @@ Javascript, HTML, CSS, Github, Atom, Chrome Dev Tools
 <img width="500" alt="Static image of web app site" src="https://user-images.githubusercontent.com/49960644/135168161-fddb6b9d-1bc9-40d0-96d4-1c51f6a8580d.png">
 
 
-2. Users alternate clicking on the tile where they wish to place their token. The data model & then DOM update on each click. Users cannot click on a square that is already occupied- as represented by a default cursor on hover. It will remain their turn until they choose an unoccupied square.\
+2. Users alternate clicking on the tile where they wish to place their token. The data model & then DOM update on each click. Users cannot click on a square that is already occupied- as represented by a default cursor on hover. It will remain their turn until they choose an unoccupied square.
 
 ![Take Turns - Occupied Square Disabling](https://user-images.githubusercontent.com/49960644/135172416-bc484ca7-3f82-462a-8de6-60fba408868f.gif)
 
 
-3. In a winning scenario, the dynamic message at the top will update to dictate who has won. Their corresponding scoreboard will increase by 1. After 1.5 seconds the gameboard will reset entirely for a new game.\
+3. In a winning scenario, the dynamic message at the top will update to dictate who has won. Their corresponding scoreboard will increase by 1. After 1.5 seconds the gameboard will reset entirely for a new game.
 
 ![Win Scenarios](https://user-images.githubusercontent.com/49960644/135172734-55a30868-3223-492e-a585-f223cda97c96.gif)
 
 
-4. In a draw scenario, a message will display. Neither scoreboard will increase. After 1.5 seconds the gameboard will reset. \
+4. In a draw scenario, a message will display. Neither scoreboard will increase. After 1.5 seconds the gameboard will reset. 
  
 ![Draw Scenario](https://user-images.githubusercontent.com/49960644/135173812-6aede74d-428a-4eef-a751-1fd95e9bd393.gif)
 
 
-5. Upon page refresh, the scoreboard data & display will persist so that users can leave and come back and not lose track of the competition.\
+5. Upon page refresh, the scoreboard data & display will persist so that users can leave and come back and not lose track of the competition.
 
 ![Scoreboard Persist](https://user-images.githubusercontent.com/49960644/135174065-835948bf-e5ce-4101-b0d9-d69599a2b7ef.gif)
 
 
-6. At any time, users can click the 'Clear Scores & Restart' button at the bottom. This will zero out both scoreboards. It will also clear any game currently in progress.\
+6. At any time, users can click the 'Clear Scores & Restart' button at the bottom. This will zero out both scoreboards. It will also clear any game currently in progress.
 
 ![Clear Data](https://user-images.githubusercontent.com/49960644/135174479-a1c6118a-badf-44a8-bc74-847696b4e948.gif)
 
