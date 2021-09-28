@@ -1,6 +1,6 @@
-# Tic Tac Toe: Nocturne
+# Tic Tac Toe: Nocturne 
 
-Mod 2108 FEE - Final Project
+Mod 2108 FEE - Final Solo Project
 
 A game of browser tic tac toe, fully dynamic in response to user interaction. Nocturnal animal themed. Built out through applying my knowledge of the data model, event delegation, DOM manipulation via Javascript, localStorage, and all programming fundamentals. 
 
