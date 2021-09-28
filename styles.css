@@ -1,30 +1,40 @@
 * {
-  font-family: 'Arial', sans-serif;
   box-sizing: border-box;
+  font-family: 'Kalam';
 }
 
 body {
-
+  background-blend-mode: multiply;
+  background-color: rgb(0,0,0, 0.1);
   background-image: url('starry.jpeg');
   background-size: cover;
+  font-size: 28px;
   height: 100vh;
   margin: auto;
-  font-size: 28px;
 }
 
 main {
   height: 100%;
-  display: flex;
   justify-content: space-evenly;
 }
 
-h2,
-h3 {
-  margin: 3% 0;
+main,
+article,
+div,
+.wins,
+.game,
+.grid {
+  display: flex;
 }
 
-h2 {
-  font-size: 1.8em;
+article,
+div {
+  justify-content: center;
+}
+
+.wins,
+.game {
+  flex-direction: column;
 }
 
 h1 {
@@ -32,46 +42,32 @@ h1 {
   margin-bottom: 5%;
 }
 
+h2 {
+  font-size: 2em;
+}
+
+h2,
+h3 {
+  margin: 3% 0;
+}
+
 h3 {
   color: white;
 }
 
-h1,
-h3 {
-  width: fit-content;
+div {
+  margin-top: 4%;
 }
 
 article {
   background: white;
   height: 32.3%;
   width: 32.3%;
-  display: flex;
-  justify-content: center;
   align-items: center;
-}
-
-article:hover,
-button:hover {
-  cursor: pointer;
-}
-
-.disabled {
-  cursor: default!important;
-}
-
-button:hover {
-  background-color: #4C5482;
 }
 
 article p {
   font-size: 2.5em;
-  margin: 0;
-}
-
-div {
-  display: flex;
-  justify-content: center;
-  margin-top: 4%;
 }
 
 button {
@@ -83,29 +79,36 @@ button {
   width: 30%;
 }
 
+article:hover,
+button:hover {
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #4C5482;
+}
+
+.disabled {
+  cursor: default !important;
+}
+
 .wins {
-  width: 20%;
-  display: flex;
-  flex-direction: column;
   align-items: center;
   padding: 2%;
+  width: 20%;
 }
 
 .game {
   background: white;
-  height: 100%;
   width: 50%;
   padding: 1% 6% 1.5% 6%;
-  display: flex;
-  flex-direction: column;
 }
 
 .grid {
   background-image: url('starry.jpeg');
-  background-size: 250%;
   background-position: center;
+  background-size: 275%;
   height: 77%;
-  display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
   align-content: space-between;

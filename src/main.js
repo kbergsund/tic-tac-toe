@@ -5,9 +5,8 @@ var winCount = document.querySelectorAll('#winCount');
 // Event Listeners
 window.addEventListener('load', generateGrid);
 gameBoard.addEventListener('click', playGame);
-// gameBoard.addEventListener('click', clearDOM);
 
-// Global Variables
+// Global Variable
 var game = new Game();
 
 // Functions & Event Handlers
@@ -30,11 +29,19 @@ function persistWins() {
   for (var i = 0; i < 2; i++) {
     var player = i + 1;
     var winsToDisplay = game[`player${player}`].wins;
-    winCount[i].childNodes[3].innerText = `${winsToDisplay} wins`;
+    if (winsToDisplay === 1) {
+      var win = 'win';
+    } else {
+      var win = 'wins';
+    }
+    winCount[i].childNodes[3].innerText = `${winsToDisplay} ${win}`;
   }
 }
 
 function playGame() {
+  if (game.win || game.draw) {
+    return;
+  }
   updateGrid();
   evaluateGame();
   if (event.target.type === 'button') {
@@ -49,10 +56,11 @@ function updateGrid() {
   for (var i = 0; i < grid.childNodes.length; i++) {
     var tileToUpdate = grid.childNodes[i];
     var tileNumber = grid.childNodes[i].classList;
-    console.log("tile number  " + tileNumber);
     if (tileNumber === tileClicked) {
-      tileToUpdate.innerHTML = `<p>${game.board[tileNumber]}<p>`
-      tileClicked.add('disabled');
+      if (!tileClicked.contains('disabled')) {
+        tileToUpdate.innerHTML = `<p>${game.board[tileNumber]}<p>`
+        tileClicked.add('disabled');
+      }
     }
   }
 }
@@ -64,7 +72,6 @@ function evaluateGame() {
     displayWin();
     resetPlay();
   } else if (game.checkForDraw()) {
-    header.innerText = 'It\'s a draw!';
     resetPlay();
   } else {
     game.toggleTurn();
@@ -75,17 +82,23 @@ function evaluateGame() {
 function displayWin() {
   var winnerID = game.processWin(game.winningToken);
   var interpolatedWinner = game[`player${winnerID}`].wins;
-  winCount[winnerID - 1].childNodes[3].innerText = `${interpolatedWinner} wins`;
+  if (interpolatedWinner === 1) {
+    var win = 'win';
+  } else {
+    var win = 'wins';
+  }
+  winCount[winnerID - 1].childNodes[3].innerText = `${interpolatedWinner} ${win}`;
 }
 
 function resetPlay() {
-  game.resetGame();
-  setTimeout(generateGrid, 1800);
+  setTimeout(function() {
+    game.resetGame();
+    generateGrid();
+  }, 1500);
 }
 
+
 function clearDOM() {
-  // if (event.target.type === 'button') {
-    game.clearScores();
-    generateGrid();
-  // }
+  game.clearScores();
+  generateGrid();
 }

@@ -44,18 +44,21 @@ class Game {
         if (i === 0 || i === 3 || i === 4) {
           if (boardValue === num2 && boardValue === num3) {
             this.winningToken = boardValue;
+            this.win = true;
             return true;
           }
         }
         if (i === 0 || i === 1 || i === 2) {
           if (boardValue === num4 && boardValue === num5) {
             this.winningToken = boardValue;
+            this.win = true;
             return true;
           }
         }
         if (i === 0 || i === 2) {
           if (boardValue === num6 && boardValue === num7) {
             this.winningToken = boardValue;
+            this.win = true;
             return true;
           }
         }
@@ -65,6 +68,7 @@ class Game {
 
   checkForDraw() {
     if (!this.board.includes('')) {
+      this.draw = true;
       return true;
     } else {
       return false;
@@ -88,6 +92,8 @@ class Game {
   resetGame() {
     this.board = ["", "", "", "", "", "", "" ,"" ,""];
     this.turn = this.player1;
+    this.win = false;
+    this.draw = false;
     if (localStorage.length !== 0) {
       var player1Refresh = game.player1.retrieveWinsFromStorage();
       game.player1.wins = player1Refresh.wins;
