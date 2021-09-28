@@ -72,6 +72,7 @@ function evaluateGame() {
     displayWin();
     resetPlay();
   } else if (game.checkForDraw()) {
+    header.innerText = 'It\'s a draw!';
     resetPlay();
   } else {
     game.toggleTurn();
