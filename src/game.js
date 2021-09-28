@@ -10,7 +10,6 @@ class Game {
     if (this.board[tileClicked] === "") {
       this.board[tileClicked] = this.turn.token;
     } else {
-      // error handling
       this.toggleTurn();
     }
   }
@@ -42,21 +41,18 @@ class Game {
       }
 
       if (boardValue !== "") {
-        // horizontal
         if (i === 0 || i === 3 || i === 4) {
           if (boardValue === num2 && boardValue === num3) {
             this.winningToken = boardValue;
             return true;
           }
         }
-        // vertical
         if (i === 0 || i === 1 || i === 2) {
           if (boardValue === num4 && boardValue === num5) {
             this.winningToken = boardValue;
             return true;
           }
         }
-        // diagonal
         if (i === 0 || i === 2) {
           if (boardValue === num6 && boardValue === num7) {
             this.winningToken = boardValue;
@@ -67,20 +63,6 @@ class Game {
     }
   }
 
-  processWin(winningToken) {
-    if (Object.values(this.player1).includes(winningToken)) {
-      var winnerID = this.player1.id;
-    } else if (Object.values(this.player2).includes(winningToken)) {
-      var winnerID = this.player2.id;
-    }
-    
-    var interpolatedWinner = `player${winnerID}`;
-    this[interpolatedWinner].winGame();
-    this.player1.saveWinsToStorage();
-    this.player2.saveWinsToStorage();
-    return winnerID;
-  }
-
   checkForDraw() {
     if (!this.board.includes('')) {
       return true;
@@ -89,14 +71,34 @@ class Game {
     }
   }
 
+  processWin(winningToken) {
+    if (Object.values(this.player1).includes(winningToken)) {
+      var winnerID = this.player1.id;
+    } else if (Object.values(this.player2).includes(winningToken)) {
+      var winnerID = this.player2.id;
+    }
+
+    var interpolatedWinner = `player${winnerID}`;
+    this[interpolatedWinner].winGame();
+    this.player1.saveWinsToStorage();
+    this.player2.saveWinsToStorage();
+    return winnerID;
+  }
+
   resetGame() {
     this.board = ["", "", "", "", "", "", "" ,"" ,""];
     this.turn = this.player1;
     if (localStorage.length !== 0) {
       var player1Refresh = game.player1.retrieveWinsFromStorage();
-      var player2Refresh = game.player2.retrieveWinsFromStorage();
       game.player1.wins = player1Refresh.wins;
+      var player2Refresh = game.player2.retrieveWinsFromStorage();
       game.player2.wins = player2Refresh.wins;
     }
+  }
+
+  clearScores() {
+    localStorage.clear();
+    this.player1.wins = 0;
+    this.player2.wins = 0;
   }
 }
