@@ -13,8 +13,8 @@ Javascript, HTML, CSS, Github, Atom, Chrome Dev Tools
 * Break down complex final spec into smaller, actionable iterations that build on each other cleanly and effectively.
 
 ## Install & Setup
-- Clone this repo
-- Use `open index.html` within the command line
+* Clone this repo
+* Input `open index.html` within the command line
 
 ## Web App Attributes 
 ### Code Architecture:
