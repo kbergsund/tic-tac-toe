@@ -23,7 +23,7 @@ Code Architecture:
 * `main.js` - Where all DOM manipulation takes place. The DOM is dependent on and buitlt directly from the data model.
 
 1. On page load, users are greeted by the game board, framed by two scoreboards and the corresponding animal tokens (in place of X's and O's). A message at the top relays who's turn it is.
-<img width="800" alt="Static image of web app site" src="https://user-images.githubusercontent.com/49960644/135168161-fddb6b9d-1bc9-40d0-96d4-1c51f6a8580d.png">
+<img width="500" alt="Static image of web app site" src="https://user-images.githubusercontent.com/49960644/135168161-fddb6b9d-1bc9-40d0-96d4-1c51f6a8580d.png">
 
 2. Users alternate clicking on the tile where they wish to place their token. The data model & then DOM update on each click. Users cannot click on a square that is already occupied- as represented by a default cursor on hover. It will remain their turn until they choose an unoccupied square.
 ![Take Turns - Occupied Square Disabling](https://user-images.githubusercontent.com/49960644/135172416-bc484ca7-3f82-462a-8de6-60fba408868f.gif)
