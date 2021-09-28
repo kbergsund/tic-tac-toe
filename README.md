@@ -17,11 +17,12 @@ Javascript, HTML, CSS, Github, Atom, Chrome Dev Tools
 - Use `open index.html` within the command line
 
 ## Web App Attributes 
-Code Architecture:
+### Code Architecture:
 * `player.js` - Declaration of Player class that tracks unique player id, token (emoji), and number of wins.
 * `game.js` - Where the data model lives and all changes to the data model take place. An array of 9 empty strings that correspond to the 9 tiles on the tic-tac-toe grid is the app's source of truth- it is set as a `game.board` property. Two other properties are two object instances of the Player class. Other methods include 
 * `main.js` - Where all DOM manipulation takes place. The DOM is dependent on and buitlt directly from the data model.
 
+### Functionality:
 1. On page load, users are greeted by the game board, framed by two scoreboards and the corresponding animal tokens (in place of X's and O's). A message at the top relays who's turn it is.
 <img width="500" alt="Static image of web app site" src="https://user-images.githubusercontent.com/49960644/135168161-fddb6b9d-1bc9-40d0-96d4-1c51f6a8580d.png">
 
