@@ -1,5 +1,5 @@
 # Tic Tac Toe: Nocturne 
-
+Turing School of Software & Design
 Mod 2108 FEE - Final Solo Project
 
 A game of browser tic tac toe, fully dynamic in response to user interaction. Nocturnal animal themed. Built out through applying my knowledge of the data model, event delegation, DOM manipulation via Javascript, localStorage, and all programming fundamentals. 
